@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Phan Anh Tuấn 💗</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+:root{--pink:#8ecae6;--deep:#2878a8;--cream:#f4fbff;--ink:#604653}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:'DM Sans',sans-serif;background:radial-gradient(circle at 15% 15%,#fff 0,transparent 28%),linear-gradient(135deg,#dff3ff,#c8eaff 45%,#e8f7ff);overflow-x:hidden}
+button{font:inherit;cursor:pointer}
+#intro{position:fixed;inset:0;z-index:10;display:grid;place-items:center;background:linear-gradient(135deg,#dff3ff,#d9f0ff);transition:opacity .9s,visibility .9s}
+#intro.hide{opacity:0;visibility:hidden}
+.envelope-wrap{text-align:center;padding:24px}
+.envelope{width: min(78vw,310px);height:205px;border:0;background:transparent;position:relative;filter:drop-shadow(0 16px 20px #4b91b850);animation:float 2.8s ease-in-out infinite}
+.env-body{position:absolute;inset:30px 0 0;background:#f4fbff;border-radius:12px}
+.env-flap{position:absolute;top:30px;left:0;width:0;height:0;border-left:155px solid transparent;border-right:155px solid transparent;border-top:112px solid #83c5e8;transform-origin:top;transition:transform .7s;z-index:2}
+.envelope.open .env-flap{transform:rotateX(180deg);z-index:0}
+.seal{position:absolute;z-index:3;top:95px;left:calc(50% - 22px);width:44px;height:44px;border-radius:50%;background:#2878a8;color:white;display:grid;place-items:center;font-size:22px}
+.envelope p{position:absolute;z-index:3;top:145px;width:100%;font-family:'Playfair Display',serif;font-size:20px;color:#286f98}
+.open-btn,.music-btn{border:0;border-radius:999px;padding:13px 23px;background:#2878a8;color:white;box-shadow:0 8px 20px #2878a835;margin-top:18px}
+.open-btn:hover,.music-btn:hover{transform:translateY(-2px)}
+main{width:min(920px,92vw);margin:0 auto;padding:46px 0 70px;text-align:center}
+.kicker{letter-spacing:4px;text-transform:uppercase;font-size:11px;color:#477f9e;font-weight:700}
+h1{font:700 clamp(36px,7vw,68px)/1.08 'Playfair Display',serif;color:#286f98;margin:13px 0}
+.subtitle{font-size:15px;line-height:1.8;max-width:620px;margin:0 auto;color:#526f83}
+.cake-photo{
+  display:block;
+  width:min(720px,92vw);
+  height:auto;
+  object-fit:contain;
+  margin:24px auto 12px;
+  border-radius:24px;
+  border:7px solid rgba(255,255,255,.88);
+  box-shadow:0 18px 42px rgba(28,86,126,.22);
+  animation:bob 3s ease-in-out infinite;
+}
+@keyframes bob{50%{transform:translateY(-9px) rotate(2deg)}}
+.card{background:#f7fcffd9;border:1px solid #ffffffc9;border-radius:28px;padding:22px;margin:28px auto;box-shadow:0 18px 50px #367da51a;backdrop-filter:blur(8px)}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gallery img{width:100%;height:auto;object-fit:contain;border-radius:17px;display:block;background:#edf7fc;transition:transform .35s}
+.gallery img:hover{transform:scale(1.015)}
+.gallery img:first-child{grid-column:span 2}
+.message{font:600 clamp(22px,4vw,30px)/1.5 'Playfair Display',serif;color:#286f98;margin:8px auto 12px}
+.note{line-height:1.9;font-size:15px;max-width:650px;margin:0 auto;color:#526f83}
+.signature{font-family:'Playfair Display',serif;color:#2878a8;font-size:20px;margin-top:18px}
+.controls{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin:18px auto}
+.music-btn{margin:0;background:#fff;color:#286f98;border:1px solid #b9def2;box-shadow:none}
+.small{font-size:12px;color:#66869b;margin-top:10px}
+footer{font-size:12px;color:#66869b;margin-top:32px}
+.floaty{position:fixed;bottom:-50px;pointer-events:none;z-index:0;animation:rise linear forwards;opacity:.85}
+@keyframes rise{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+#fireworks{position:fixed;inset:0;pointer-events:none;z-index:8}
+@media(max-width:600px){.cake-photo{height:auto;width:92vw}main{padding-top:30px}.card{padding:14px;border-radius:22px}.gallery{grid-template-columns:repeat(2,1fr);gap:8px}.gallery img{height:auto}.gallery img:first-child{grid-column:span 2}.cake{font-size:64px}}
+</style>
+</head>
+<body>
+<canvas id="fireworks"></canvas>
+<div id="intro">
+  <div class="envelope-wrap">
+    <div class="envelope" id="envelope">
+      <div class="env-body"></div><div class="env-flap"></div>
+      <div class="seal">♥</div><p>A little letter for you</p>
+    </div>
+    <button class="open-btn" onclick="openCard()">Mở món quà nhỏ này 💌</button>
+    <div class="small">Dành riêng cho Phan Anh Tuấn</div>
+  </div>
+</div>
+
+<main>
+  <div class="kicker">a little celebration, just for you</div>
+  <h1>Happy Birthday<br>Phan Anh Tuấn</h1>
+  <p class="subtitle">Hôm nay là ngày đặc biệt của một người cũng rất đặc biệt. Mong Tuấn sẽ có một ngày thật vui và thật nhiều điều dễ thương. ♡</p>
+  <img class="cake-photo" src="images/birthday-scene.png" alt="Thiệp sinh nhật Phan Anh Tuấn">
+  <section class="card">
+    <div class="message">Chúc mừng sinh nhật, Tuấn! 💗</div>
+    <p class="note">
+      Chúc mừng sinh nhật anh, người em thương. ❤️
+      <br><br>
+      Sinh nhật năm nay em không thể ở cạnh anh, không thể tự tay chuẩn bị một chiếc bánh,
+      đứng trước mặt anh hát bài chúc mừng sinh nhật hay ôm anh thật lâu vào đúng ngày đặc biệt này.
+      Nghĩ đến điều đó, em cũng thấy tiếc và nhớ anh nhiều lắm.
+      <br><br>
+      Nhưng dù hôm nay không thể ở bên cạnh, em vẫn muốn anh biết rằng em luôn nhớ đến ngày này
+      và mong anh có một ngày sinh nhật thật vui. Em gửi đến anh chiếc ôm thật chặt qua màn hình,
+      một nụ hôn thật xa và tất cả những lời yêu thương mà lúc này em chưa thể nói trực tiếp.
+      <br><br>
+      Tuổi mới, em mong anh luôn khỏe mạnh, bình an, gặp nhiều may mắn và làm được những điều
+      anh đang ấp ủ. Mong những ngày áp lực sẽ nhẹ nhàng hơn, những chuyện không vui sớm qua đi,
+      và anh sẽ luôn có đủ niềm tin để bước tiếp. Nhớ ăn uống đầy đủ, ngủ sớm hơn một chút
+      và đừng vì mải lo cho mọi thứ mà quên chăm sóc bản thân nhé.
+      <br><br>
+      Em không thể tặng anh một ngày sinh nhật có em ở ngay bên cạnh, nên em gửi anh món quà nhỏ này.
+      Trong từng bức ảnh là những khoảnh khắc em muốn giữ lại, còn trong từng lời chúc là tình cảm
+      em dành cho anh. Em hy vọng khi mở món quà này, anh sẽ cảm nhận được rằng khoảng cách chỉ
+      khiến chúng mình chưa thể gặp nhau hôm nay, chứ không làm ngày đặc biệt của anh kém ý nghĩa
+      trong lòng em.
+      <br><br>
+      Em mong sinh nhật sau, và nhiều sinh nhật sau nữa, em có thể ở cạnh anh để tự mình nói
+      những lời này, cùng anh thổi nến, ăn bánh và tạo thêm thật nhiều kỷ niệm. Còn hôm nay,
+      anh cứ vui vẻ nhé. Đừng buồn vì em không ở đó, vì em vẫn đang thương anh theo cách của em,
+      dù là từ xa.
+      <br><br>
+      **Chúc mừng sinh nhật anh yêu. Cảm ơn anh đã là một phần thật đặc biệt trong cuộc sống của em.
+      Em thương anh, nhớ anh và mong sớm được gặp anh.** 💗
+    </p>
+    <div class="signature">Thương gửi một lời chúc thật đẹp ✨</div>
+  </section>
+
+  <section class="card">
+    <div class="kicker" style="margin-bottom:16px">little moments</div>
+    <div class="gallery">
+      <img src="images/photo-1.jpeg" alt="Kỷ niệm 1">
+      <img src="images/photo-2.jpeg" alt="Kỷ niệm 2">
+      <img src="images/photo-3.jpeg" alt="Kỷ niệm 3">
+      <img src="images/photo-4.jpeg" alt="Kỷ niệm 4">
+      <img src="images/photo-5.jpeg" alt="Kỷ niệm 5">
+      <img src="images/photo-6.jpeg" alt="Kỷ niệm 6">
+      <img src="images/photo-7.jpeg" alt="Kỷ niệm 7">
+    </div>
+  </section>
+  <footer>Made with ♡, just for your special day.</footer>
+</main>
+
+<script>
+const intro=document.getElementById('intro');
+const envelope=document.getElementById('envelope');
+function openCard(){
+  envelope.classList.add('open');
+  setTimeout(()=>{intro.classList.add('hide');startFireworks();},450);
+  for(let i=0;i<28;i++) setTimeout(makeFloaty,i*90);
+}
+function makeFloaty(){
+  const el=document.createElement('div');
+  el.className='floaty';
+  el.textContent=['♡','♥','✨','🎈','🌸'][Math.floor(Math.random()*5)];
+  el.style.left=Math.random()*100+'vw';
+  el.style.fontSize=(16+Math.random()*24)+'px';
+  el.style.animationDuration=(5+Math.random()*5)+'s';
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),10500);
+}
+setInterval(makeFloaty,1000);
+
+// Fireworks canvas
+const canvas=document.getElementById('fireworks'),ctx=canvas.getContext('2d');
+let W,H,particles=[];
+function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight}
+addEventListener('resize',resize);resize();
+function burst(x,y){
+  const colors=['#65bde8','#ffe29a','#ffffff','#9cc9ff','#8bd7d0'];
+  for(let i=0;i<65;i++){
+    const a=Math.PI*2*i/65, speed=1.2+Math.random()*4;
+    particles.push({x,y,vx:Math.cos(a)*speed,vy:Math.sin(a)*speed,life:65+Math.random()*25,color:colors[Math.floor(Math.random()*colors.length)]});
+  }
+}
+let fwActive=false;
+function startFireworks(){
+  fwActive=true;
+  let count=0;
+  const timer=setInterval(()=>{burst(Math.random()*W,W*.15+Math.random()*H*.45);if(++count>9)clearInterval(timer)},420);
+}
+function animate(){
+  ctx.clearRect(0,0,W,H);
+  particles=particles.filter(p=>p.life>0);
+  for(const p of particles){
+    p.x+=p.vx;p.y+=p.vy;p.vy+=.025;p.vx*=.99;p.life--;
+    ctx.globalAlpha=Math.max(0,p.life/85);ctx.fillStyle=p.color;
+    ctx.beginPath();ctx.arc(p.x,p.y,2,0,Math.PI*2);ctx.fill();
+  }
+  ctx.globalAlpha=1;requestAnimationFrame(animate);
+}
+animate();
+</script>
+</body>
+</html>
